@@ -1,0 +1,32 @@
+{
+  "env": {
+    // Includes es2020’s, node’s and browser’s global variables
+    "es2020": true,
+    "node": true,
+    "browser": true
+  },
+  "plugins": ["react", "jsx-a11y", "import", "react-hooks"],
+  "parserOptions": {
+    // Indicates the parser you’re using ES2020’s syntax
+    // Allows for the use of imports and the parsing of JSX
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      // Tells eslint-plugin-react to automatically detect the version of React to use
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+  ],
+  "rules": {
+    "no-console": "warn", // Warns the uses of console.log
+    "no-eval": "error", // Disallows the use of eval
+    "import/first": "error"
+  }
+}

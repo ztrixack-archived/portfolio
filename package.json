@@ -1,27 +1,13 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
+  "description": "My portfolio website",
+  "author": "ztrixack (ztrixack.th@gmail.com)",
+  "license": "MIT",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "main": "src/index.js",
+  "engines": {
+    "node": "16"
   },
   "browserslist": {
     "production": [
@@ -34,5 +20,62 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.+(js|jsx|json|scss|css)": [
+      "eslint --fix",
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  "scripts": {
+    "lint": "eslint --ext .js,.jsx ./src",
+    "format": "prettier --write \"src/**/*.+(js|jsx|json|scss|css)\"",
+    "sass": "sass src:src --watch --no-source-map",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@testing-library/dom": "^8.1.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9.8.6",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
+    "postcss": "^7.0.36",
+    "prettier": "^2.3.2",
+    "sass": "^1.36.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "twin.macro": "^2.6.2"
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js"
+    }
   }
 }
