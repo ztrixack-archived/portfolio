@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import tw from 'twin.macro'
 import LoadingBar from 'react-top-loading-bar'
 import ReactTypingEffect from 'react-typing-effect'
+import Timeline from '../../components/Timeline'
 
 const Container = tw.div`max-w-4xl mx-auto p-5 mt-5`
 const Heading = tw.h1`text-blue-500 text-2xl p-2 my-4`
@@ -27,6 +28,7 @@ const App = () => {
         <Button onClick={() => ref.current.staticStart()}>Start Static Loading Bar</Button>
         <Button onClick={() => ref.current.complete()}>Complete</Button>
       </Container>
+      <Timeline />
     </>
   )
 }
