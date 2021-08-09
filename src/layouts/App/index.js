@@ -1,39 +1,31 @@
 /** @jsxImportSource @emotion/react */
-import tw from 'twin.macro'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import Header from '../../components/Header'
-import Navigation from '../../components/Navigation'
-
-const Container = tw.div`flex items-center justify-between h-12 mx-auto max-w-7xl`
+import React from 'react'
+import tw, { styled } from 'twin.macro'
+import Terminal from '../Terminal'
 
 const App = () => {
+  const [theme, setTheme] = React.useState('dark')
+  const themeVars =
+    theme === 'dark'
+      ? {
+          app: { backgroundColor: '#333444' },
+          terminal: { boxShadow: '0 2px 5px #111' },
+          window: { backgroundColor: '#222345', color: '#F4F4F4' },
+          field: { backgroundColor: '#222333', color: '#F4F4F4', fontWeight: 'normal' },
+          cursor: { animation: '1.0s blink-dark step-end infinite' },
+        }
+      : {
+          app: { backgroundColor: '#ACA9BB' },
+          terminal: { boxShadow: '0 2px 5px #33333375' },
+          window: { backgroundColor: '#5F5C6D', color: '#E3E3E3' },
+          field: { backgroundColor: '#E3E3E3', color: '#474554', fontWeight: 'bold' },
+          cursor: { animation: '1.0s blink-light step-end infinite' },
+        }
+
   return (
-    <Router>
-      <Header>
-        <Navigation />
-      </Header>
-      <Container>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/skill">
-            <div />
-          </Route>
-          <Route path="/experience">
-            <div />
-          </Route>
-          <Route path="/about">
-            <div />
-          </Route>
-          <Route path="/contact">
-            <div />
-          </Route>
-          <Route path="/">
-            <div />
-          </Route>
-        </Switch>
-      </Container>
-    </Router>
+    <div tw="h-screen flex justify-center items-center" style={themeVars.app}>
+      <Terminal theme={themeVars} setTheme={setTheme} />
+    </div>
   )
 }
 

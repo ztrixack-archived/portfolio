@@ -6,6 +6,9 @@
     "browser": true
   },
   "plugins": ["react", "jsx-a11y", "import", "react-hooks"],
+  "compilerOptions": {
+    "lib": ["ESNext.String"]
+  },
   "parserOptions": {
     // Indicates the parser you’re using ES2020’s syntax
     // Allows for the use of imports and the parsing of JSX
