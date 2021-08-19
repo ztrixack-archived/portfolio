@@ -1,41 +1,32 @@
 /** @jsxImportSource @emotion/react */
+import 'twin.macro'
 import React from 'react'
-import tw, { styled } from 'twin.macro'
-import Field from '../../components/Terminal/Field'
+
+import { WindowContainer, Window, Button, Title } from './style'
+import Field from '../../components/Field'
 
 const Terminal = ({ theme, setTheme }) => {
   const [maximized, setMaximized] = React.useState(false)
-  const [title, setTitle] = React.useState('Portfolio')
-  const handleClose = () => (window.location.href = 'https://codepen.io/HuntingHawk')
+  const [title, setTitle] = React.useState('Profile')
+
+  const handleClose = () => {}
+  const handleHidden = () => {}
   const handleMinMax = () => {
     setMaximized(!maximized)
     document.querySelector('#field').focus()
   }
 
   return (
-    <Window
-      tw="transition-all duration-200"
-      style={maximized ? { height: '100vh', width: '100vw', maxWidth: '100vw' } : theme.terminal}
-    >
-      <div tw="flex items-center h-10 px-0 py-4 cursor-default" style={theme.window}>
-        <span tw="mr-auto ml-4" style={{ color: theme.window.color }}>
-          {title}
-        </span>
-        <Button tw="bg-green-500" onClick={handleMinMax} />
-        <Button tw="bg-yellow-500" />
+    <WindowContainer maximized={maximized} theme={theme.terminal}>
+      <Window theme={theme.window}>
         <Button tw="bg-red-500" onClick={handleClose} />
-      </div>
+        <Button tw="bg-yellow-500" onClick={handleHidden} />
+        <Button tw="bg-green-500" onClick={handleMinMax} />
+        <Title theme={theme.window}>{title}</Title>
+      </Window>
       <Field theme={theme} setTheme={setTheme} setTitle={setTitle} />
-    </Window>
+    </WindowContainer>
   )
 }
 
 export default Terminal
-
-const Window = styled.div`
-  width: 90vw;
-  max-width: 900px;
-  height: 550px;
-`
-
-const Button = tw.button`mr-4 border-none h-4 w-4 rounded-full shadow`

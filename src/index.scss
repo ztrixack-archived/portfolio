@@ -12,24 +12,6 @@ body {
   outline: none;
 }
 
-#field::-webkit-scrollbar {
-  width: 10px;
-}
-
-#field.dark::-webkit-scrollbar-thumb {
-  background-color: #333444;
-}
-
-#field.light::-webkit-scrollbar-thumb {
-  background-color: #aca9bb;
-}
-
-#field > div {
-  min-height: 20px;
-  width: 100%;
-  cursor: default;
-}
-
 @keyframes blink-dark {
   0%,
   100% {
