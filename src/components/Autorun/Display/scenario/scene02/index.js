@@ -1,15 +1,14 @@
 import { FRAME_RATE } from 'configs/constant'
-import { replaceAt } from 'configs/utils'
+import AsciiArt from 'configs/AsciiArt'
 import Animations from '../../animations'
 import Scene from '../scene'
 import objects from './objects'
 
 const getScenes = ({ height, width }) => {
-  const centerwidth = Math.floor(width / 2)
   const centerHeight = Math.floor(height / 2)
   const { getCurrentState, getStateAt } = Scene.setupObjectPosition(
     FRAME_RATE,
-    { x: 33, y: centerHeight + 5 },
+    { x: 32, y: centerHeight + 5 },
     { height, width },
   )
 
@@ -18,34 +17,10 @@ const getScenes = ({ height, width }) => {
   })
 }
 
-const getDisplay = ({ screen, scenes, frame }) => {
-  return screen
-    .map((line, indexLine) =>
-      scenes.reduce((displayLine, scene) => {
-        const { position, time, frames } = scene
-        if (indexLine < position.y) return displayLine
-
-        const animation = Scene.getAnimationAtFrame({ ...scene, frame })
-        if (!animation) return displayLine
-
-        const round = Math.floor((frame - time.from) / frames.total)
-        const newPosX = position.x + round * position.addX
-        const newPosY = position.y + round * position.addY
-        return replaceAt(displayLine, newPosX, animation[indexLine - newPosY])
-      }, line),
-    )
-    .map(line => line.replaceAll(/ /g, '\xa0'))
-    .map((line, i) => (
-      <div key={i} tw="overflow-hidden">
-        {line}
-      </div>
-    ))
-}
-
 const setup = ({ height, width }) => {
-  const screen = [...Array(height)].map(() => ' '.repeat(width))
+  const screen = [...Array(height)].map(() => new AsciiArt())
   const scenes = getScenes({ height, width })
-  return ({ frame }) => getDisplay({ screen, scenes, frame })
+  return ({ frame }) => Scene.display({ screen, scenes, frame })
 }
 
 export default { setup }

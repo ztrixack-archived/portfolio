@@ -2,13 +2,22 @@
 import 'twin.macro'
 import { useEffect, useState } from 'react'
 
-import { SCENE_RATE, FRAME_RATE } from 'configs/constant'
+import { FRAME_RATE } from 'configs/constant'
 import Scene01 from './scenario/scene01'
 import Scene02 from './scenario/scene02'
 
+const getChapterTime = index => {
+  const time = {
+    0: 20,
+    1: 40,
+  }
+
+  return time[index] * FRAME_RATE
+}
+
 const Display = ({ height, width, setTitle }) => {
   const [frame, setFrame] = useState(0 * FRAME_RATE)
-  const [chapter, setChapter] = useState(0)
+  const [chapter, setChapter] = useState(1)
   const [scenarios, setScenarios] = useState([() => []])
 
   useEffect(() => {
@@ -16,9 +25,9 @@ const Display = ({ height, width, setTitle }) => {
   }, [height, width])
 
   useEffect(() => {
-    if (frame + 1 === 2 * SCENE_RATE * FRAME_RATE) return
+    if (frame + 1 === 2 * getChapterTime(chapter)) return
 
-    if (frame + 1 === SCENE_RATE * FRAME_RATE) {
+    if (frame + 1 === getChapterTime(chapter)) {
       setChapter(chapter => chapter + 1)
     }
 
@@ -32,7 +41,7 @@ const Display = ({ height, width, setTitle }) => {
     }
   }, [frame])
 
-  const display = chapter < scenarios.length ? scenarios[chapter]({ frame: frame % (SCENE_RATE * FRAME_RATE) }) : []
+  const display = chapter < scenarios.length ? scenarios[chapter]({ frame: frame % getChapterTime(chapter) }) : []
 
   return display
 }

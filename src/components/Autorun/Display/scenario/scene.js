@@ -2,10 +2,50 @@ const getAnimationAtFrame = ({ animations, time, frames, frame }) => {
   if (frame >= time.from && frame < time.to) {
     const index = (frame - time.from) % frames.total
     const timeframe = frames.start.findIndex(duration => duration > index) - 1
+    if (timeframe < 0) return animations[animations.length - 1]
     return animations[timeframe]
   } else {
     return null
   }
+}
+
+const display = ({ screen, scenes, frame }) => {
+  const filtedScene = scenes.filter(scene => scene.time.from <= frame && scene.time.to > frame)
+
+  return screen
+    .map(line => line.clear())
+    .map((line, indexLine) =>
+      filtedScene.reduce((result, scene) => {
+        const { position, time, frames } = scene
+        if (indexLine < position.y) return result
+
+        const animation = getAnimationAtFrame({ ...scene, frame })
+        if (!animation) return result
+
+        const round = Math.floor((frame - time.from) / frames.total)
+        const newPosX = position.x + round * position.addX
+        const newPosY = position.y + round * position.addY
+        const index = indexLine - newPosY
+
+        if (index >= 0 && index < animation.length) {
+          const data = {
+            Component: 'span',
+            content: animation[index],
+            offset: newPosX,
+            style: (scene.styles && scene.styles[index]) || undefined,
+          }
+
+          result.save(data)
+        }
+
+        return result
+      }, line),
+    )
+    .map((line, i) => (
+      <div key={i} tw="block overflow-hidden">
+        {line.getComponent()}
+      </div>
+    ))
 }
 
 const setupObjectPosition = (frameRate, { start = 0, x = 0, y = 0 }, { height, width }) => {
@@ -33,7 +73,8 @@ const setupObjectPosition = (frameRate, { start = 0, x = 0, y = 0 }, { height, w
       takeX = 0,
       takeY = 0,
       takeTime = frameRate,
-      changeRate,
+      changeRate = frameRate,
+      freeze = 0,
     },
   ) => {
     posX = setX + addX
@@ -48,14 +89,15 @@ const setupObjectPosition = (frameRate, { start = 0, x = 0, y = 0 }, { height, w
       loop: loop + tempLoop,
       maxHeight,
       maxWidth,
+      freeze,
     }
 
-    if (changeRate) result.rate = changeRate
+    if (changeRate !== frameRate) result.rate = changeRate
 
     // next data
     posX += loop * takeX
     posY += loop * takeY
-    time += loop * takeTime
+    time += loop * takeTime * (changeRate / frameRate) + freeze
 
     return result
   }
@@ -76,4 +118,4 @@ const setupObjectPosition = (frameRate, { start = 0, x = 0, y = 0 }, { height, w
   }
 }
 
-export default { getAnimationAtFrame, setupObjectPosition }
+export default { display, setupObjectPosition }

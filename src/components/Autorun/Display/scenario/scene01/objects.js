@@ -44,8 +44,9 @@ export const me = [
     anim: 'flick',
   },
   {
-    anim: 'standUp',
+    anim: 'flick',
     configs: { changeRate: (25 / 8) * FRAME_RATE },
+    options: { model: 'hologram_freeze' },
   },
 ]
 
