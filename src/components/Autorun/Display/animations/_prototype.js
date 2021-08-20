@@ -1,4 +1,4 @@
-import { FRAME_RATE } from '../../../configs/constant'
+import { FRAME_RATE } from 'configs/constant'
 
 export default (anim = [], addX = 0, addY = 0) =>
   ({ x = 0, y = 0, start = 0, loop = 1, rate = FRAME_RATE }) => {

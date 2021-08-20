@@ -1,4 +1,4 @@
-import { FRAME_RATE } from '../../../../configs/constant'
+import { FRAME_RATE } from 'configs/constant'
 
 export const me = [
   {
@@ -7,7 +7,7 @@ export const me = [
   },
   {
     anim: 'standUp',
-    configs: { takeTime: FRAME_RATE / 8 },
+    configs: { changeRate: FRAME_RATE / 8 },
   },
   {
     anim: 'walk',
@@ -19,7 +19,7 @@ export const me = [
   },
   {
     anim: 'standUp',
-    configs: { takeTime: FRAME_RATE / 4 },
+    configs: { changeRate: FRAME_RATE / 4 },
   },
   {
     label: 'handwave',
@@ -29,7 +29,7 @@ export const me = [
   },
   {
     anim: 'standUp',
-    configs: { loop: 2 },
+    configs: { changeRate: 2 * FRAME_RATE },
   },
   {
     anim: 'handUp',
@@ -44,13 +44,8 @@ export const me = [
     anim: 'flick',
   },
   {
-    anim: 'flick',
-    configs: { loop: 2 },
-    options: { model: 'sand' },
-  },
-  {
-    anim: 'transaction',
-    configs: { setX: 0, setY: 0, changeRate: FRAME_RATE * 3, takeTime: 3 },
+    anim: 'standUp',
+    configs: { changeRate: (25 / 8) * FRAME_RATE },
   },
 ]
 
@@ -63,24 +58,23 @@ export const messages = [
   },
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, addX: 2, addY: -5, loop: 2 },
+    configs: { addStartTime: FRAME_RATE / 2, addX: 2, addY: -5, changeRate: 2 * FRAME_RATE },
     options: { messages: ['Thanks for viewing my profile!'] },
     labelAt: 'handwave',
   },
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, loop: 2 },
+    configs: { addStartTime: FRAME_RATE / 2, changeRate: 2 * FRAME_RATE },
     options: { messages: ["I'm Tanawat Hongthai.", "You can call me 'Toom'."] },
   },
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, loop: 2 },
+    configs: { addStartTime: FRAME_RATE / 2, changeRate: 2 * FRAME_RATE },
     options: { messages: ["I'm the full stack developer.", 'The man who made this website.'] },
   },
-
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, loop: 2 },
+    configs: { addStartTime: FRAME_RATE / 2, changeRate: 2 * FRAME_RATE },
     options: { messages: ["Let's me show you my skills"] },
   },
 ]

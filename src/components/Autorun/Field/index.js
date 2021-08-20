@@ -2,10 +2,9 @@
 import 'twin.macro'
 import { useEffect, useRef, useState } from 'react'
 
+import { CHAR_WIDTH, CHAR_HEIGHT } from 'configs/constant'
 import { TerminalField } from './style'
 import Display from '../Display'
-
-import { CHAR_WIDTH, CHAR_HEIGHT } from '../../configs/constant'
 
 const Field = ({ theme, setTitle }) => {
   const [height, setHeight] = useState(0)

@@ -2,11 +2,13 @@
 import 'twin.macro'
 import React from 'react'
 
+import AutorunField from 'components/Autorun/Field'
+import TerminalField from 'components/Terminal/Field'
 import { WindowContainer, Window, Button, Title } from './style'
-import Field from '../../components/Field'
 
 const Terminal = ({ theme, setTheme }) => {
   const [maximized, setMaximized] = React.useState(false)
+  const [autorun, setAutorun] = React.useState(true)
   const [title, setTitle] = React.useState('Profile')
 
   const handleClose = () => {}
@@ -16,6 +18,8 @@ const Terminal = ({ theme, setTheme }) => {
     document.querySelector('#field').focus()
   }
 
+  const Field = autorun ? AutorunField : TerminalField
+
   return (
     <WindowContainer maximized={maximized} theme={theme.terminal}>
       <Window theme={theme.window}>
@@ -24,7 +28,7 @@ const Terminal = ({ theme, setTheme }) => {
         <Button tw="bg-green-500" onClick={handleMinMax} />
         <Title theme={theme.window}>{title}</Title>
       </Window>
-      <Field theme={theme} setTheme={setTheme} setTitle={setTitle} />
+      <Field theme={theme} setTheme={setTheme} setTitle={setTitle} setAutorun={setAutorun} />
     </WindowContainer>
   )
 }

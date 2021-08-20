@@ -1,14 +1,15 @@
-import { FRAME_RATE } from '../../../../configs/constant'
-import { replaceAt } from '../../../../configs/utils'
+import { FRAME_RATE } from 'configs/constant'
+import { replaceAt } from 'configs/utils'
 import Animations from '../../animations'
 import Scene from '../scene'
 import objects from './objects'
 
 const getScenes = ({ height, width }) => {
+  const centerwidth = Math.floor(width / 2)
   const centerHeight = Math.floor(height / 2)
   const { getCurrentState, getStateAt } = Scene.setupObjectPosition(
     FRAME_RATE,
-    { y: centerHeight + 5 },
+    { x: 33, y: centerHeight + 5 },
     { height, width },
   )
 

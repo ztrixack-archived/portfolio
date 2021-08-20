@@ -1,4 +1,4 @@
-export const SCENE_RATE = 25
+export const SCENE_RATE = 20
 export const FRAME_RATE = 24
 
 export const CHAR_WIDTH = 8.17

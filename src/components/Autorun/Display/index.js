@@ -2,20 +2,21 @@
 import 'twin.macro'
 import { useEffect, useState } from 'react'
 
-import { SCENE_RATE, FRAME_RATE } from '../../configs/constant'
-import Scene01 from './scenario/scene01/index'
+import { SCENE_RATE, FRAME_RATE } from 'configs/constant'
+import Scene01 from './scenario/scene01'
+import Scene02 from './scenario/scene02'
 
 const Display = ({ height, width, setTitle }) => {
-  const [frame, setFrame] = useState(0)
+  const [frame, setFrame] = useState(0 * FRAME_RATE)
   const [chapter, setChapter] = useState(0)
   const [scenarios, setScenarios] = useState([() => []])
 
   useEffect(() => {
-    setScenarios(() => [Scene01.setup({ height, width })])
+    setScenarios(() => [Scene01.setup({ height, width }), Scene02.setup({ height, width })])
   }, [height, width])
 
   useEffect(() => {
-    if (frame + 1 === 1 * SCENE_RATE * FRAME_RATE) return
+    if (frame + 1 === 2 * SCENE_RATE * FRAME_RATE) return
 
     if (frame + 1 === SCENE_RATE * FRAME_RATE) {
       setChapter(chapter => chapter + 1)

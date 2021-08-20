@@ -1,5 +1,5 @@
+import { repeat, replaceAt } from 'configs/utils'
 import _prototype from './_prototype'
-import { repeat, replaceAt } from '../../../configs/utils'
 
 const block = [
   ' . . ', //
