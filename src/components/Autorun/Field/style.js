@@ -19,10 +19,4 @@ export const TerminalField = styled.div`
   &.light::-webkit-scrollbar-thumb {
     background-color: #aca9bb;
   }
-
-  & > div {
-    height: 18px;
-    width: 100%;
-    cursor: default;
-  }
 `

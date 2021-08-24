@@ -29,16 +29,16 @@ export const me = [
   },
   {
     anim: 'standUp',
-    configs: { changeRate: 2 * FRAME_RATE },
+    configs: { changeRate: 7 * FRAME_RATE },
   },
   {
     anim: 'handUp',
-    configs: { loop: 2 },
+    configs: { loop: 6 },
     options: { model: 'right_freeze' },
   },
   {
     anim: 'standUp',
-    configs: { loop: 3 },
+    configs: { changeRate: 3 * FRAME_RATE },
   },
   {
     anim: 'flick',
@@ -59,23 +59,23 @@ export const messages = [
   },
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, addX: 2, addY: -5, changeRate: 2 * FRAME_RATE },
+    configs: { addStartTime: FRAME_RATE / 2, addX: 2, addY: -5, changeRate: 3 * FRAME_RATE },
     options: { messages: ['Thanks for viewing my profile!'] },
     labelAt: 'handwave',
   },
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, changeRate: 2 * FRAME_RATE },
+    configs: { addStartTime: FRAME_RATE / 2, changeRate: 6 * FRAME_RATE },
     options: { messages: ["I'm Tanawat Hongthai.", "You can call me 'Toom'."] },
   },
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, changeRate: 2 * FRAME_RATE },
+    configs: { addStartTime: FRAME_RATE / 2, changeRate: 6 * FRAME_RATE },
     options: { messages: ["I'm the full stack developer.", 'The man who made this website.'] },
   },
   {
     anim: 'message',
-    configs: { addStartTime: FRAME_RATE / 2, changeRate: 2 * FRAME_RATE },
+    configs: { addStartTime: FRAME_RATE / 2, changeRate: 3 * FRAME_RATE },
     options: { messages: ["Let's me show you my skills"] },
   },
 ]

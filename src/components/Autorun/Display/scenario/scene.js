@@ -42,7 +42,7 @@ const display = ({ screen, scenes, frame }) => {
       }, line),
     )
     .map((line, i) => (
-      <div key={i} tw="block overflow-hidden">
+      <div key={i} tw="block overflow-hidden w-full cursor-default" style={{ height: '18px' }}>
         {line.getComponent()}
       </div>
     ))

@@ -6,6 +6,7 @@ import handWave from './handWave'
 import somersault from './somersault'
 import shortMessage from './shortMessage'
 import standUp from './standUp'
+import star from './star'
 import transaction from './transaction'
 import typing from './typing'
 import walk from './walk'
@@ -19,6 +20,7 @@ const animations = {
   shortMessage,
   somersault,
   standUp,
+  star,
   transaction,
   typing,
   walk,

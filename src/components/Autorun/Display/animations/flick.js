@@ -9,42 +9,21 @@ const flick_0 = [
 
 const flick_1 = [
   '', //
-  '  o',
-  ' /|v*',
+  '  o .',
+  ' /|v',
   ' / \\',
 ]
 
 const flick_hologram_0 = [
   '', //
-  '  o .',
+  "  o '",
   ' /|v',
   ' / \\',
 ]
 
 const flick_hologram_1 = [
   '', //
-  '  o !',
-  ' /|v',
-  ' / \\',
-]
-
-const flick_hologram_2 = [
-  '  _ | _', //
   '  o *',
-  ' /|v',
-  ' / \\',
-]
-
-const flick_hologram_3 = [
-  '   \\ /', //
-  '  o .',
-  ' /|v',
-  ' / \\',
-]
-
-const flick_hologram_4 = [
-  '  __ __', //
-  '  o !',
   ' /|v',
   ' / \\',
 ]
@@ -89,12 +68,11 @@ export default (params, { model = 'hologram' }) => {
     flick: [flick_0, flick_1, flick_1],
     flick_freeze: [flick_1],
     hologram: [flick_0, flick_1, flick_1, flick_hologram_0, flick_hologram_1],
-    hologram_freeze: [flick_hologram_2, flick_hologram_3, flick_hologram_4],
     sand: [flick_0, flick_1, flick_1, flick_sand_0, flick_sand_1, flick_sand_2, flick_sand_3, flick_sand_4],
     sand_freeze: [flick_sand_4],
   }
 
   const _default = animations['flick']
 
-  return _prototype(animations[model] || _default, 0, 0)({ ...params, x: params.x - 1 })
+  return _prototype(animations[model] || _default, 0, 0)({ ...params, x: params.x - 1, y: params.y - 1 })
 }

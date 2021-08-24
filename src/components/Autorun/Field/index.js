@@ -7,7 +7,7 @@ import { TerminalField } from './style'
 import Display from '../Display'
 
 const Field = ({ theme, setTitle }) => {
-  const [height, setHeight] = useState(0)
+  const [height, setHeight] = useState(40)
   const [width, setWidth] = useState(0)
   const ref = useRef(null)
 
@@ -30,7 +30,7 @@ const Field = ({ theme, setTitle }) => {
     }, 250)
   })
 
-  const charHeight = Math.floor(height / CHAR_HEIGHT)
+  const charHeight = Math.floor((height - 40) / CHAR_HEIGHT)
   const charWidth = Math.floor(width / CHAR_WIDTH)
 
   return (
