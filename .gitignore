@@ -73,3 +73,5 @@ build
 dist
 
 _unused
+# Local Netlify folder
+.netlify
