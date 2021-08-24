@@ -2,6 +2,8 @@
 import tw from 'twin.macro'
 import React from 'react'
 
+import { BrowserRouter as Router } from 'react-router-dom'
+
 import Terminal from '../Terminal'
 
 const getTheme = themeName => {
@@ -24,6 +26,14 @@ const getTheme = themeName => {
       cursor: { animation: '1.0s blink-light step-end infinite' },
       text: tw`text-green-500`,
     },
+    error: {
+      name: 'error',
+      app: { backgroundColor: '#333444' },
+      terminal: { boxShadow: '0 2px 5px #33333375' },
+      window: tw`bg-red-700 text-white`,
+      field: tw`bg-red-300 text-white font-bold`,
+      cursor: {},
+    },
   }
 
   return themes[themeName]
@@ -34,9 +44,11 @@ const App = () => {
   const themeVars = getTheme(theme)
 
   return (
-    <div tw="h-screen flex justify-center items-center" style={themeVars.app}>
-      <Terminal theme={themeVars} setTheme={setTheme} />
-    </div>
+    <Router>
+      <div tw="h-screen flex justify-center items-center" style={themeVars.app}>
+        <Terminal theme={themeVars} setTheme={setTheme} />
+      </div>
+    </Router>
   )
 }
 

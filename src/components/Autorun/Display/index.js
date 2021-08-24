@@ -12,13 +12,13 @@ const getChapterEndingFrame = index => {
 
   const time = {
     0: 30,
-    1: 90,
+    1: 80,
   }
 
   return time[index] * FRAME_RATE
 }
 
-const Display = ({ height, width, setTitle }) => {
+const Display = ({ height, width, setTitle, setErrorScene, setTheme }) => {
   const [frame, setFrame] = useState(0 * FRAME_RATE)
   const [run, setRun] = useState(true)
   const [chapter, setChapter] = useState(0)
@@ -36,7 +36,7 @@ const Display = ({ height, width, setTitle }) => {
     }
 
     const timeout = setTimeout(() => {
-      setTitle(chapter + ' ' + ((frame + 1) / FRAME_RATE).toFixed(0))
+      // setTitle(chapter + ' ' + ((frame + 1) / FRAME_RATE).toFixed(0))
       setFrame(frame => frame + 1)
     }, 1000 / FRAME_RATE)
 
@@ -44,6 +44,13 @@ const Display = ({ height, width, setTitle }) => {
       clearTimeout(timeout)
     }
   }, [run, frame])
+
+  useEffect(() => {
+    if (chapter === 2) {
+      setErrorScene(true)
+      setTheme('error')
+    }
+  }, [chapter])
 
   const setTime = time => {
     let frame = time * FRAME_RATE
