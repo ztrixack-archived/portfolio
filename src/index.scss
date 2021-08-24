@@ -1,10 +1,32 @@
 body {
   margin: 0;
-  font-family: 'Proxima Nova', 'Roboto', sans-serif;
+  overflow: hidden;
+  font-family: 'Roboto Mono', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+:focus,
+:hover,
+:active {
+  outline: none;
+}
+
+@keyframes blink-dark {
+  0%,
+  100% {
+    background-color: #f4f4f4;
+  }
+  50% {
+    background-color: transparent;
+  }
+}
+@keyframes blink-light {
+  0%,
+  100% {
+    background-color: #474554;
+  }
+  50% {
+    background-color: transparent;
+  }
 }
