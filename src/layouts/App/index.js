@@ -5,6 +5,7 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Terminal from '../Terminal'
+import AboutMe from 'layouts/AboutMe'
 
 const getTheme = themeName => {
   const themes = {
@@ -46,7 +47,8 @@ const App = () => {
   return (
     <Router>
       <div tw="h-screen flex justify-center items-center" style={themeVars.app}>
-        <Terminal theme={themeVars} setTheme={setTheme} />
+        {/* <Terminal theme={themeVars} setTheme={setTheme} /> */}
+        <AboutMe />
       </div>
     </Router>
   )
