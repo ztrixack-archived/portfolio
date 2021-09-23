@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import Terminal from '../Terminal'
 import AboutMe from 'layouts/AboutMe'
+import Home from 'layouts/Home'
 
 const getTheme = themeName => {
   const themes = {
@@ -46,10 +47,11 @@ const App = () => {
 
   return (
     <Router>
-      <div tw="h-screen flex justify-center items-center" style={themeVars.app}>
-        {/* <Terminal theme={themeVars} setTheme={setTheme} /> */}
+      <Home />
+      {/* <div tw="h-screen flex justify-center items-center overflow-hidden" style={themeVars.app}>
+        <Terminal theme={themeVars} setTheme={setTheme} />
         <AboutMe />
-      </div>
+      </div> */}
     </Router>
   )
 }
