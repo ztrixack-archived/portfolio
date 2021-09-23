@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import 'twin.macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import ResumeField from 'components/Resume/Field'
 import AutorunField from 'components/Autorun/Field'
@@ -9,7 +9,7 @@ import { WindowContainer, Window, Button, Title } from './style'
 
 const Terminal = ({ theme, setTheme }) => {
   const [maximized, setMaximized] = React.useState(false)
-  const [autorun, setAutorun] = React.useState(true)
+  const [autorun, setAutorun] = React.useState(false)
   const [errorScene, setErrorScene] = React.useState(false)
   const [title, setTitle] = React.useState('Profile')
 

@@ -8,8 +8,8 @@ export default [
     to: '/blog',
   },
   {
-    title: '.playground()',
-    to: '/playground',
+    title: '.profile()',
+    to: '/profile',
   },
   {
     title: '.about()',

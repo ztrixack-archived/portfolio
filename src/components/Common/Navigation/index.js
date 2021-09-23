@@ -23,13 +23,13 @@ const Navigation = () => {
   )
 
   return (
-    <nav tw="relative select-none bg-black lg:flex lg:items-stretch w-full">
+    <nav tw="relative select-none lg:flex lg:items-stretch w-full absolute">
       <div tw="flex flex-shrink-0 items-stretch h-12">
         <Link
           to="/"
           tw="flex-grow-0 flex-shrink-0 relative p-8 leading-normal text-white no-underline flex items-center hover:text-blue-500"
         >
-          Tailwind
+          Z
         </Link>
         <div tw="block lg:hidden ml-auto p-2">
           <Hamburger size={20} toggled={isOpen} toggle={setOpen} color="white" />

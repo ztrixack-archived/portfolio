@@ -2,11 +2,12 @@
 import tw from 'twin.macro'
 import React from 'react'
 
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Terminal from '../Terminal'
 import AboutMe from 'layouts/AboutMe'
 import Home from 'layouts/Home'
+import Navigation from 'components/Common/Navigation'
 
 const getTheme = themeName => {
   const themes = {
@@ -47,11 +48,24 @@ const App = () => {
 
   return (
     <Router>
-      <Home />
-      {/* <div tw="h-screen flex justify-center items-center overflow-hidden" style={themeVars.app}>
-        <Terminal theme={themeVars} setTheme={setTheme} />
-        <AboutMe />
-      </div> */}
+      <Switch>
+        <Route path="/about">
+          <Navigation />
+          <main tw="h-screen flex justify-center items-center overflow-hidden">
+            <AboutMe />
+          </main>
+        </Route>
+        <Route path="/profile">
+          <Navigation />
+          <main tw="h-screen flex justify-center items-center overflow-hidden" style={themeVars.app}>
+            <Terminal theme={themeVars} setTheme={setTheme} />
+          </main>
+        </Route>
+        <Route path="/">
+          <Navigation />
+          <Home />
+        </Route>
+      </Switch>
     </Router>
   )
 }
