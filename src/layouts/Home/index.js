@@ -1,23 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import 'twin.macro'
 import React from 'react'
+import Talents from 'components/Home/Talents'
+import Intro from 'components/Home/Intro'
+import CircleCursor from 'components/Home/CircleCursor'
 
 const Home = () => {
   return (
-    <main>
-      <section tw="flex h-screen bg-black">
-        <div tw="m-auto justify-between">
-          <h3 tw="text-white">Z</h3>
-          <p tw="text-white">x</p>
-        </div>
-      </section>
-      <section tw="flex h-screen bg-white">
-        <div tw="m-auto justify-between">
-          <h3 tw="text-white">Z</h3>
-          <p tw="text-white">x</p>
-        </div>
-      </section>
-    </main>
+    <>
+      <main id="main">
+        <Intro />
+        <Talents />
+      </main>
+      <CircleCursor />
+    </>
   )
 }
 
