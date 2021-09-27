@@ -11,10 +11,17 @@ export const Cursor = styled.div`
   z-index: 9999;
   mix-blend-mode: difference;
   transition: all 150ms ease;
-  transition-property: opacity, background-color, transform, mix-blend-mode;
+  transition-property: background-color, transform, mix-blend-mode;
   background-color: #fff;
+  transition: width 500ms, height 500ms, opacity 500ms;
 
-  ${({ hidden }) => hidden && tw`opacity-0`}
+  ${({ hide }) =>
+    hide &&
+    `
+      width: 0px;
+      height: 0px;
+      opacity: 0;
+    `}
   ${({ clicked }) =>
     clicked &&
     `

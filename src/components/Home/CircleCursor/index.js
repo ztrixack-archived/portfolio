@@ -60,7 +60,7 @@ const CircleCursor = () => {
 
   return (
     <Cursor
-      hidden={hidden}
+      hide={hidden}
       clicked={clicked}
       style={{
         left: `${position.x}px`,
