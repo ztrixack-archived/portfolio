@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import tw from 'twin.macro'
-import React from 'react'
+import { useEffect, useState } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -8,6 +10,7 @@ import Terminal from '../Terminal'
 import AboutMe from 'layouts/AboutMe'
 import Home from 'layouts/Home'
 import Navigation from 'components/Common/Navigation'
+import UnderDevelopment from 'components/UnderDevelopment'
 
 const getTheme = themeName => {
   const themes = {
@@ -43,22 +46,43 @@ const getTheme = themeName => {
 }
 
 const App = () => {
-  const [theme, setTheme] = React.useState('dark')
+  const [theme, setTheme] = useState('dark')
   const themeVars = getTheme(theme)
+
+  useEffect(() => {
+    AOS.init({ duration: 1500 })
+    AOS.refresh()
+  }, [])
 
   return (
     <Router>
       <Switch>
         <Route path="/about">
-          <Navigation />
           <main tw="h-screen flex justify-center items-center overflow-hidden">
             <AboutMe />
           </main>
         </Route>
         <Route path="/profile">
-          <Navigation />
           <main tw="h-screen flex justify-center items-center overflow-hidden" style={themeVars.app}>
             <Terminal theme={themeVars} setTheme={setTheme} />
+          </main>
+        </Route>
+        <Route path="/diary">
+          <Navigation />
+          <main tw="h-screen flex justify-center items-center overflow-hidden" style={themeVars.app}>
+            <UnderDevelopment />
+          </main>
+        </Route>
+        <Route path="/journey">
+          <Navigation />
+          <main tw="h-screen flex justify-center items-center overflow-hidden" style={themeVars.app}>
+            <UnderDevelopment />
+          </main>
+        </Route>
+        <Route path="/story">
+          <Navigation />
+          <main tw="h-screen flex justify-center items-center overflow-hidden" style={themeVars.app}>
+            <UnderDevelopment />
           </main>
         </Route>
         <Route path="/">

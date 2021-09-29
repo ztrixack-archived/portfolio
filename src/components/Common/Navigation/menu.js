@@ -4,15 +4,15 @@ export default [
     to: '/',
   },
   {
-    title: '.blog()',
-    to: '/blog',
+    title: '.diary()',
+    to: '/diary',
   },
   {
-    title: '.profile()',
-    to: '/profile',
+    title: '.journey()',
+    to: '/journey',
   },
   {
-    title: '.about()',
-    to: '/about',
+    title: '.story()',
+    to: '/story',
   },
 ]

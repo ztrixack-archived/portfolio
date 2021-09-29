@@ -80,7 +80,10 @@ module.exports = {
     backdropOpacity: theme => theme('opacity'),
     backdropSaturate: theme => theme('saturate'),
     backdropSepia: theme => theme('sepia'),
-    backgroundColor: theme => theme('colors'),
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      background: '#273036',
+    }),
     backgroundImage: {
       none: 'none',
       'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',

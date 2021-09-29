@@ -23,7 +23,7 @@ const Navigation = () => {
   )
 
   return (
-    <nav tw="relative select-none lg:flex lg:items-stretch w-full absolute">
+    <nav tw="relative select-none lg:flex lg:items-stretch w-full absolute z-10">
       <div tw="flex flex-shrink-0 items-stretch h-12">
         <Link
           to="/"
