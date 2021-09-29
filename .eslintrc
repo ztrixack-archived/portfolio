@@ -27,6 +27,12 @@
   "rules": {
     "no-console": "warn", // Warns the uses of console.log
     "no-eval": "error", // Disallows the use of eval
-    "import/first": "error"
+    "import/first": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
